@@ -19,9 +19,9 @@ if(process.env.HEROKU_POSTGRESQL_CYAN_URL != undefined) {
   console.log('Here is connectionString: ', connectionString);
 } else {
   // LOCAL DB
-  connectionString = 'postgres://localhost:5432/homegrown';
+  connectionString = 'postgres://localhost:5432/homegrown_1';
   // TEST DB
-  // connectionString = 'postgres://localhost:5432/homegrownTest';
+  // connectionString = 'postgres://localhost:5432/homegrownTest_1';
 
 }
 
