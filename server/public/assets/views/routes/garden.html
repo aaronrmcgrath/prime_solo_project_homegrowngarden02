@@ -1,0 +1,51 @@
+
+<md-content class="garden" ng-controller="UserController">
+  <h1 id="garden" > {{ user.res.first_name }}'s Garden</h1>
+
+  <md-input-container class="search" >
+    <input type="text" ng-model="search" ng-model-options="{ debounce: 750 }" placeholder="Search Garden"/>
+  </md-input-container>
+
+    <md-content layout="column" layout-align="center none"  class="removed plants" ng-controller="RemovePlantController">
+
+      <md-content class="garden-plants" ng-controller="UpdatePlantController"
+      ng-repeat="plant in gardens.res | filter:search" >
+
+        <md-card class="garden-plant" >
+          <!-- <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"> -->
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-display-2"  layout="row" layout-align="center start"> {{ plant.plant_name }} </span>
+              <span class="md-headline" layout="row" layout-align="center"> {{ plant.plant_variety }} </span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <!-- <p> {{ plant.plant_type }} </p> -->
+            <p>Planted on {{ plant.date_planted }} </p>
+            <p> {{ plant.description }} </p>
+            <!-- <p> {{ plant.notes }} </p> -->
+            <div class="notes">
+              <div>
+                <h4>NOTES</h4>
+                <p> {{ plant.notes }} </p>
+              </div>
+              <div layout="row">
+                <md-input-container class="md-accent md-block" flex-gt-xs>
+                  <label>Add Notes</label>
+
+                  <input ng-model="notes" required>
+                </md-input-container>
+              </div>
+              <md-button class="md-raised md-accent" ng-click="updatePlant(notes, plant.notes, plant.garden_plants_id)" >Add Note</md-button>
+            </div>
+            <div layout="row" layout-align="end">
+              <md-button type="Remove" ng-click="removePlant(plant.garden_plants_id)" class="md-warn">Remove</md-button>
+            </div>
+          </md-card-content>
+        </md-card>
+
+      </md-content>
+
+    </md-content>
+
+</md-content>

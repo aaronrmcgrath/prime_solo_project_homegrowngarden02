@@ -1,0 +1,13 @@
+
+  <div class="container search">
+
+    <form>
+      <label>PLANT SEARCH</label>
+      <input type="text" ng-model="search.param" ng-model-options="{ debounce: 750 }" placeholder="Search Plants"/>
+    </form>
+
+    <div class="search-results">
+      <p>{{search.param}}</p>
+    </div>
+
+  </div>

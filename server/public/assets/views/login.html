@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-pp="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Prime Kappa Solo Project: Home Grown Garden App</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="/assets/vendors/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <!-- <link rel="stylesheet" href="/assets/styles/style.css"> -->
+
+
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-messages/angular-messages.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-material/angular-material.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
+
+    <!-- MY SCRIPTS -->
+    <script type="text/javascript" src="/assets/scripts/client.js"></script>
+    <script type="text/javascript" src="/assets/scripts/controllers/controllers.js"></script>
+    <script type="text/javascript" src="/assets/scripts/factories/factory.js"></script>
+
+  </head>
+  <body>
+    <h1>HOME GROWN GARDENS</h1>
+
+    <div class="instructions">
+            <div class="container">
+                <h1 class="lead">User Login</h1>
+            </div>
+        </div>
+        <div class="container">
+            <!-- Set form action and method -->
+            <form action="/" method="post">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username"/>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password"/>
+                </div>
+                <div>
+                    <input type="submit" value="Log In"/>
+                    <a href="/register">Register</a>
+                </div>
+            </form>
+
+        </div>
+
+
+        <main ng-view>
+
+        </main>
+
+
+  </body>
+</html>

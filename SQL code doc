@@ -1,0 +1,64 @@
+DB CODE FOR DYNAMICALLY CREATING TABLES AND DB
+
+
+// Table: plant_type creating the columns, not creating types yet
+
+CREATE UNIQUE INDEX plant_type_pkey ON plant_type USING btree (id);
+
+// Table: watering_level creating the columns, not the levels
+
+CREATE UNIQUE INDEX watering_level_pkey ON watering_level USING btree (id);
+
+//CREATE UNIQUE INDEX plants_pkey ON plants USING btree (id) ???
+
+// Table: Gardens creating the columns:
+
+CREATE TABLE "public"."gardens" (
+    "id" serial NOT NULL,
+    "user" int NOT NULL,
+    "name" varchar(80) NOT NULL,
+    PRIMARY KEY ("id"),
+    CONSTRAINT "user" FOREIGN KEY ("user") REFERENCES "public"."users"("id")
+);
+
+// Adding a plants to the database (2 examples)
+INSERT INTO "public"."plants"("plant_name", "plant_type", "plant_variety", "description", "watering_level") VALUES('Tomato', '2', 'Roma', 'Roma is a very common tomato for cooking. Flavorful and a hardy variety. 65 - 80 days to harvest.', '3') RETURNING "id", "plant_name", "plant_type", "plant_variety", "description", "watering_level";
+
+INSERT INTO "public"."plants"("plant_name", "plant_type", "description", "watering_level") VALUES('Pear', '1', 'Common tree fruit. Great for snacking. ', '2') RETURNING "id", "plant_name", "plant_type", "plant_variety", "description", "watering_level";
+
+// Adding a Garden to the gardens table
+
+INSERT INTO "public"."gardens"("user", "name") VALUES('1', 'Backyard Garden') RETURNING "id", "user", "name";
+
+// Creating a plant in the garden_plants table
+
+CREATE TABLE "public"."garden_plants" (
+    "id" serial NOT NULL,
+    "user" int NOT NULL,
+    "plant" int,
+    PRIMARY KEY ("id"),
+    CONSTRAINT "user" FOREIGN KEY ("user") REFERENCES "public"."users"("id"),
+    CONSTRAINT "plant" FOREIGN KEY ("plant") REFERENCES "public"."plants"("id")
+);
+
+
+// Selecting a specific plant from plants Table when it matches a users Garden
+
+SELECT plant_name
+FROM plants
+JOIN garden_plants
+ON plants.id = garden_plants.plant
+JOIN gardens
+ON garden_plants.garden = gardens.id
+WHERE gardens.user = 1;
+
+// Selecting plants from garden
+
+SELECT * FROM plants
+JOIN garden_plants
+ON plants.id = garden_plants.plant
+JOIN gardens
+ON garden_plants.garden = gardens.id
+WHERE gardens.user = 1;
+
+//

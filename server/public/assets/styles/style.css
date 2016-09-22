@@ -1,0 +1,41 @@
+html, body, h1, h2, h3, ol, ul, li, a {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+#login-page {
+  /*background-image: url("https://bonnieplants.com/wp-content/uploads/bountiful-summer-vegetable-harvest.jpg");
+  background-size: cover;*/
+
+  background-color: #97d677;
+  background-size: cover;
+}
+
+.list{
+  margin: auto;
+}
+
+.plants {
+  background-color: blue;
+}
+
+.page-title {
+  color: green;
+}
+
+.garden-plants {
+
+}
+
+.garden-plant {
+
+}
+
+.search {
+  margin: 0 auto;
+}
+
+/*.main-nav-bar {
+  background: green;
+}*/
